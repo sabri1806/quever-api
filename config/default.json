@@ -1,0 +1,4 @@
+{
+    "mongoURI":
+    "mongodb://admin:admin123@ds253408.mlab.com:53408/queverdb"
+}
