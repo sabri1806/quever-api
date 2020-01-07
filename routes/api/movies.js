@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
-//const mongoose = require('mongoose');
+//const router = require('express').Router();
 
 // Load Movie model
 let Movie = require('../../models/Movie');
@@ -31,35 +30,34 @@ router.get('/:id', (req, res) => {
     .catch(err => res.status(404).json({ nomoviefound: 'No Movie found' }));
 });
 
-// @route GET api/movies 
+// @route POST api/movies 
 // @description add/save movie
 // @access Public
 router.post('/', (req, res) => {
 
-  const moviename = req.body.moviename;
-  console.log(moviename + "req de movie");
-  const newMovie = new Movie({ moviename });
+  const newMovie = new Movie(req.body);
 
   newMovie.save()
 
     .then(() => res.json('Movie Added!!'))
     .catch(err => res.status(400).json('Error: ' + err));
-  console.log(moviename + "req");
+
 });
 
-
-// @route GET api/movies/:id
+// @route PUT api/movies/:id
 // @description Update movie
 // @access Public
 router.put('/:id', (req, res) => {
-  Movie.findByIdAndUpdate(req.params.id, req.body)
+  
+  console.log(req.body)
+  Movie.findOneAndUpdate(req.params.id, req.body)
     .then(movie => res.json({ msg: 'Updated successfully' }))
     .catch(err =>
       res.status(400).json({ error: 'Unable to update the Database' })
     );
 });
 
-// @route GET api/movies/:id
+// @route DELETE api/movies/:id
 // @description Delete movie by id
 // @access Public
 router.delete('/:id', (req, res) => {

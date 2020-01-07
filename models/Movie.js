@@ -9,6 +9,21 @@ const MovieSchema = new mongoose.Schema({
         trim: true,
         minlength: 3
     },
+    description:{
+        type:String,
+    }
+,
+    genre:{
+        type:String,
+    },
+    year:{
+        type:String,
+    },
+    updated_date: {
+        type: Date,
+        default: Date.now
+        
+    }
 }, {
     timestamps: true,
 });
