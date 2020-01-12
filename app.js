@@ -1,19 +1,20 @@
 const express = require('express');
-//const cors = require('cors');
-//const mongoose = require('mongoose');
+
 const connectDB = require('./config/db');
+const cors = require('cors');
+
 // routes
 const movies = require('./routes/api/movies');
 
 const app = express();
 
 
-//connect db 
+//connect db  
 connectDB();
 
 //middleware
-//app.use(cors());
-app.use(express.json());
+app.use(cors({ origin: true, credentials: true }));
+app.use(express.json({ extended: false }));
 
 app.get('/', (req, res) => res.send('Hello world! Im Saa in quever app, and I hope that work fine :P '));
 

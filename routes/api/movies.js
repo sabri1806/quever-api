@@ -26,7 +26,9 @@ router.get('/', (req, res) => {
 // @access Public
 router.get('/:id', (req, res) => {
   Movie.findById(req.params.id)
-    .then(movie => res.json(movie))
+    .then(movie => {
+      console.log(movie);
+      return res.json(movie);})
     .catch(err => res.status(404).json({ nomoviefound: 'No Movie found' }));
 });
 
@@ -50,7 +52,8 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
   
   console.log(req.body)
-  Movie.findOneAndUpdate(req.params.id, req.body)
+  const filter = {_id:req.params.id};
+  Movie.findOneAndUpdate(filter, req.body)
     .then(movie => res.json({ msg: 'Updated successfully' }))
     .catch(err =>
       res.status(400).json({ error: 'Unable to update the Database' })

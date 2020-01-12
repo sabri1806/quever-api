@@ -12,16 +12,15 @@ const MovieSchema = new mongoose.Schema({
     description:{
         type:String,
     }
-,
+    ,
     genre:{
         type:String,
     },
     year:{
         type:String,
     },
-    updated_date: {
-        type: Date,
-        default: Date.now
+    cast: {
+        type: String
         
     }
 }, {
