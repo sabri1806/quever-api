@@ -4,7 +4,7 @@ const connectDB = require('./config/db');
 const cors = require('cors');
 
 // routes
-const movies = require('./routes/api/movies');
+const movies = require('./routes/api/favorites-movies');
 
 const app = express();
 
@@ -19,7 +19,7 @@ app.use(express.json({ extended: false }));
 app.get('/', (req, res) => res.send('Hello world! Im Saa in quever app, and I hope that work fine :P '));
 
 // use Routes
-app.use('/api/movies', movies);
+app.use('/api/favorites-movies', movies);
 
 const port = process.env.PORT || 8082;
 
