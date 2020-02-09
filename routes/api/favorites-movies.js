@@ -5,13 +5,13 @@ const router = express.Router();
 // Load Movie model
 let Movie = require('../../models/Movie');
 
-// @route GET api/movies/test
+// @route GET api/favorites-movies/test
 // @description tests movies route
 // @access Public
 router.get('/test', (req, res) => res.send('movie route testing!'));
 
 
-// @route GET api/movies
+// @route GET api/favorites-movies
 // @description Get all movies
 // @access Public
 router.get('/', (req, res) => {
@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
     .catch(err => res.status(404).json({ nomoviesfound: 'No Movies found' }));
 });
 
-// @route GET api/movies/:id
+// @route GET api/favorites-movies/:id
 // @description Get single movie by id
 // @access Public
 router.get('/:id', (req, res) => {
@@ -32,7 +32,7 @@ router.get('/:id', (req, res) => {
     .catch(err => res.status(404).json({ nomoviefound: 'No Movie found' }));
 });
 
-// @route POST api/movies 
+// @route POST api/favorites-movies 
 // @description add/save movie
 // @access Public
 router.post('/', (req, res) => {
@@ -46,7 +46,7 @@ router.post('/', (req, res) => {
 
 });
 
-// @route PUT api/movies/:id
+// @route PUT api/favorites-movies/:id
 // @description Update movie
 // @access Public
 router.put('/:id', (req, res) => {
@@ -60,7 +60,7 @@ router.put('/:id', (req, res) => {
     );
 });
 
-// @route DELETE api/movies/:id
+// @route DELETE api/favorites-movies/:id
 // @description Delete movie by id
 // @access Public
 router.delete('/:id', (req, res) => {
