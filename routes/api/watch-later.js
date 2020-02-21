@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
-//cargar el modelo
+//load model
 let WatchLater = require("../../models/WatchLaterMovie");
 
-//probar ruta
+//test route
 router.get("/test-quever-list", (req, res) =>
   res.send("movie route que ver list testing!")
 );

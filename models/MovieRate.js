@@ -8,10 +8,10 @@ const RateSchema = new mongoose.Schema(
       trim: true,
       minlength: 3
     },
-    omDBId: {
+    imdbID: {
       type: String
     },
-    movieRatingQueVer: {
+    rateValue: {
       type: Number
     }
   },
@@ -20,5 +20,5 @@ const RateSchema = new mongoose.Schema(
   }
 );
 
-RateSchema.index({ email: 1, omDBId: 1 }, { unique: true });
+RateSchema.index({ email: 1, imdbId: 1 }, { unique: true });
 module.exports = MovieRate = mongoose.model("MovieRate", RateSchema);
