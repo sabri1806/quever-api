@@ -24,7 +24,7 @@ app.get("/", (req, res) =>
 // use Routes
 app.use("/api/favorites-movies", movies);
 app.use("/api/watch-later", watchLaterMovies);
-app.use("/api/rate", rateMovies);
+app.use("/api", rateMovies);
 
 const port = process.env.PORT || 8082;
 

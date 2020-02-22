@@ -9,7 +9,9 @@ router.get("/test-quever-list", (req, res) =>
   res.send("movie route que ver list testing!")
 );
 
+// @route GET api/watch-later
 // @description get all watch later movie list
+// @access Public
 router.get("/all-watch-later", (req, res) => {
   WatchLater.find()
     .then(watchlater => res.json(watchlater))
@@ -38,6 +40,9 @@ const handleCreateWatchLater = (req, res) => {
 // @access Public
 router.post("/add-watch-later-movie", handleCreateWatchLater);
 
+// @route DELETE api/watch-later
+// @description delete one watch later movie
+// @access Public
 router.delete("/delete-watch-later-movie/:id", (req, res) => {
   WatchLater.findByIdAndRemove(req.params.id, req.body)
     .then(watchLater =>
@@ -46,6 +51,9 @@ router.delete("/delete-watch-later-movie/:id", (req, res) => {
     .catch(err => res.status(404).json({ error: "Couldn't remove movie" }));
 });
 
+// @route DELETE api/watch-later
+// @description delete all watch later movie
+// @access Public
 router.delete("/delete-all-watch-later-movie", (req, res) => {
   WatchLater.deleteMany({}, () => {
     res
