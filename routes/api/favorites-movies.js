@@ -13,7 +13,6 @@ router.get("/test", (req, res) => res.send("movie route testing!"));
 // @description Get all movies
 // @access Public
 router.get("/", (req, res) => {
-  //find() mongoMethod
   Movie.find()
     .then(movies => res.json(movies))
     .catch(err => res.status(404).json({ nomoviesfound: "No Movies found" }));
