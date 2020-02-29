@@ -1,17 +1,17 @@
 const express = require("express");
 
-const connectDB = require("./config/db");
+//const connectDB = require("./config/db");
 const cors = require("cors");
 
 // routes
-const movies = require("./routes/api/favorites-movies");
-const watchLaterMovies = require("./routes/api/watch-later");
-const rateMovies = require("./routes/api/rate");
+// const movies = require("./routes/api/favorites-movies");
+// const watchLaterMovies = require("./routes/api/watch-later");
+// const rateMovies = require("./routes/api/rate");
 
 const app = express();
 
 //connect db
-connectDB();
+//connectDB();
 
 //middleware
 app.use(cors({ origin: true, credentials: true }));
@@ -22,9 +22,9 @@ app.get("/", (req, res) =>
 );
 
 // use Routes
-app.use("/api/favorites-movies", movies);
-app.use("/api/watch-later", watchLaterMovies);
-app.use("/api", rateMovies);
+// app.use("/api/favorites-movies", movies);
+// app.use("/api/watch-later", watchLaterMovies);
+// app.use("/api", rateMovies);
 
 const port = process.env.PORT || 8082;
 
