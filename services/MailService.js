@@ -22,9 +22,9 @@ const mailService = () => {
       }
     });
     let HelperOptions = {
-      from: '"Que Ver Movies" <info@ag2technology.com',
+      from: '"Que Ver Movies" <que.ver.movies@gmail.com>',
       to: data.email_to,
-      subject: "Alguien recomendó películas para tí...",
+      subject: "Someone recommended movies for you!",
       text: textBody
     };
 
