@@ -26,8 +26,10 @@ const handleCreateWatchLater = (req, res) => {
   const watchLater = {
     email: `${req.body.email}`,
     omDBId: `${req.body.omDBId}`,
-    poster: `${req.body.poster}`
+    poster: `${req.body.poster}`,
+    title: `${req.body.title}`
   };
+  console.log(watchLater);
   const newWatchLaterMovie = new WatchLater(watchLater);
   newWatchLaterMovie
     .save()

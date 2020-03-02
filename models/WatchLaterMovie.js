@@ -13,6 +13,9 @@ const WatchLaterMovieSchema = new mongoose.Schema(
     },
     poster: {
       type: String
+    },
+    title: {
+      type: String
     }
   },
   {
