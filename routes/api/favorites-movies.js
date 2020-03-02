@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const mailService = require("../../services/MailService")();
 
 // Load Movie model
 let Movie = require("../../models/Movie");
@@ -16,6 +17,13 @@ router.get("/", (req, res) => {
   Movie.find()
     .then(movies => res.json(movies))
     .catch(err => res.status(404).json({ nomoviesfound: "No Movies found" }));
+});
+
+router.post("/share-favourites", (req, res) => {
+  Movie.find({ email: req.body.email }).then(movies => {
+    mailService.sendMail(req.body, movies);
+  });
+  res.status(200).json({ message: "mail sent ok" });
 });
 
 // @route GET api/favorites-movies/:id
