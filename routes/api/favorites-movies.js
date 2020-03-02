@@ -2,61 +2,59 @@ const express = require("express");
 const router = express.Router();
 const mailService = require("../../services/MailService")();
 
-// Load Movie model
-let Movie = require("../../models/Movie");
+// Load Favourite model
+let Favourite = require("../../models/Favourite");
 
 // @route GET api/favorites-movies/test
-// @description tests movies route
+// @description tests favourite movies route
 // @access Public
 router.get("/test", (req, res) => res.send("movie route testing!"));
 
 // @route GET api/favorites-movies
-// @description Get all movies
+// @description Get all favourites movies
 // @access Public
 router.get("/", (req, res) => {
-  Movie.find()
+  Favourite.find()
     .then(movies => res.json(movies))
     .catch(err => res.status(404).json({ nomoviesfound: "No Movies found" }));
 });
 
 router.post("/share-favourites", (req, res) => {
-  Movie.find({ email: req.body.email }).then(movies => {
+  Favourite.find({ email: req.body.email }).then(movies => {
     mailService.sendMail(req.body, movies);
   });
   res.status(200).json({ message: "mail sent ok" });
 });
 
 // @route GET api/favorites-movies/:id
-// @description Get single movie by id
+// @description Get single favourite movie by id
 // @access Public
 router.get("/:id", (req, res) => {
-  Movie.findById(req.params.id)
+  Favourite.findById(req.params.id)
     .then(movie => {
-      console.log(movie);
       return res.json(movie);
     })
     .catch(err => res.status(404).json({ nomoviefound: "No Movie found" }));
 });
 
 // @route POST api/favorites-movies
-// @description add/save movie
+// @description add/save favourite movie
 // @access Public
 router.post("/", (req, res) => {
-  const newMovie = new Movie(req.body);
+  const newFavourite = new Favourite(req.body);
 
-  newMovie
+  newFavourite
     .save()
     .then(() => res.json("Movie Added!!"))
     .catch(err => res.status(400).json("Error: " + err));
 });
 
 // @route PUT api/favorites-movies/:id
-// @description Update movie
+// @description Update favourite-movie
 // @access Public
 router.put("/:id", (req, res) => {
-  console.log(req.body);
   const filter = { _id: req.params.id };
-  Movie.findOneAndUpdate(filter, req.body)
+  Favourite.findOneAndUpdate(filter, req.body)
     .then(movie => res.json({ msg: "Updated successfully" }))
     .catch(err =>
       res.status(400).json({ error: "Unable to update the Database" })
@@ -64,10 +62,10 @@ router.put("/:id", (req, res) => {
 });
 
 // @route DELETE api/favorites-movies/:id
-// @description Delete movie by id
+// @description Delete favourite movie by id
 // @access Public
 router.delete("/:id", (req, res) => {
-  Movie.findByIdAndRemove(req.params.id, req.body)
+  Favourite.findByIdAndRemove(req.params.id, req.body)
     .then(movie => res.json({ mgs: "Movie entry deleted successfully" }))
     .catch(err => res.status(404).json({ error: "No such a movie" }));
 });

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const MovieSchema = new mongoose.Schema(
+const FavouriteSchema = new mongoose.Schema(
   {
     moviename: {
       type: String,
@@ -33,4 +33,4 @@ const MovieSchema = new mongoose.Schema(
   }
 );
 
-module.exports = Movie = mongoose.model("Movie", MovieSchema);
+module.exports = Favourite = mongoose.model("Favourite", FavouriteSchema);
