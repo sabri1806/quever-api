@@ -16,7 +16,9 @@ router.get("/test", (req, res) => res.send("movie route testing!"));
 router.get("/", (req, res) => {
   Favourite.find()
     .then(movies => res.json(movies))
-    .catch(err => res.status(404).json({ nomoviesfound: "No Movies found" }));
+    .catch(err =>
+      res.status(404).json({ nomoviesfound: "No FavouriteS Movies found" })
+    );
 });
 
 router.post("/share-favourites", (req, res) => {
