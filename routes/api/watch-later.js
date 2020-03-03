@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 //load model
-let WatchLater = require("../../models/WatchLaterMovie");
+let WatchLater = require("../../models/WatchLater");
 
 //test route
 router.get("/test-quever-list", (req, res) =>
@@ -29,9 +29,9 @@ const handleCreateWatchLater = (req, res) => {
     poster: `${req.body.poster}`,
     title: `${req.body.title}`
   };
-  console.log(watchLater);
-  const newWatchLaterMovie = new WatchLater(watchLater);
-  newWatchLaterMovie
+
+  const newWatchLater = new WatchLater(watchLater);
+  newWatchLater
     .save()
     .then(() => res.json("Watch later content added successfully."))
     .catch(err => res.status(400).json("Error: " + err));

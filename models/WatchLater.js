@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const WatchLaterMovieSchema = new mongoose.Schema(
+const WatchLaterSchema = new mongoose.Schema(
   {
     email: {
       type: String,
@@ -23,9 +23,6 @@ const WatchLaterMovieSchema = new mongoose.Schema(
   }
 );
 
-WatchLaterMovieSchema.index({ email: 1, omDBId: 1 }, { unique: true });
+WatchLaterSchema.index({ email: 1, omDBId: 1 }, { unique: true });
 
-module.exports = WatchLaterMovie = mongoose.model(
-  "WatchLaterMovie",
-  WatchLaterMovieSchema
-);
+module.exports = WatchLater = mongoose.model("WatchLater", WatchLaterSchema);

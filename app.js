@@ -4,9 +4,9 @@ const connectDB = require("./config/db");
 const cors = require("cors");
 
 // routes
-const movies = require("./routes/api/favorites-movies");
-const watchLaterMovies = require("./routes/api/watch-later");
-const rateMovies = require("./routes/api/rate");
+const favourites = require("./routes/api/favorites-movies");
+const watchLater = require("./routes/api/watch-later");
+const rate = require("./routes/api/rate");
 
 const app = express();
 
@@ -22,9 +22,9 @@ app.get("/", (req, res) =>
 );
 
 // use Routes
-app.use("/api/favorites-movies", movies);
-app.use("/api/watch-later", watchLaterMovies);
-app.use("/api", rateMovies);
+app.use("/api/favorites-movies", favourites);
+app.use("/api/watch-later", watchLater);
+app.use("/api", rate);
 
 const port = process.env.PORT || 8082;
 
