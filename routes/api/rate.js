@@ -18,6 +18,9 @@ const handleSaveRateMovie = (req, res) => {
     .catch(err => res.status(400).json("Error: " + err));
 };
 
+// @route POST api/rate
+// @description add/save rate of movie
+// @access Public
 router.post("/rate/movies", handleSaveRateMovie);
 
 const calculateRate = (req, res) => {

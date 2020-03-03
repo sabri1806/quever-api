@@ -20,7 +20,9 @@ router.get("/", (req, res) => {
       res.status(404).json({ nomoviesfound: "No FavouriteS Movies found" })
     );
 });
-
+// @route POST api/favorites-movies/share-favourites
+// @description share favourites
+// @access Public
 router.post("/share-favourites", (req, res) => {
   Favourite.find({ email: req.body.email }).then(movies => {
     mailService.sendMail(req.body, movies);
