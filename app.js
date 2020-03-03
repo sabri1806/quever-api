@@ -7,6 +7,7 @@ const cors = require("cors");
 const favourites = require("./routes/api/favorites-movies");
 const watchLater = require("./routes/api/watch-later");
 const rate = require("./routes/api/rate");
+const usr = require("./routes/api/user");
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.get("/", (req, res) =>
 app.use("/api/favorites-movies", favourites);
 app.use("/api/watch-later", watchLater);
 app.use("/api", rate);
+app.use("/api/user", usr);
 
 const port = process.env.PORT || 8082;
 
