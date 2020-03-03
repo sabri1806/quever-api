@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 //load model
-let MovieRate = require("../../models/MovieRate");
+let Rate = require("../../models/Rate");
 
 const handleSaveRateMovie = (req, res) => {
   const rate = {
@@ -11,8 +11,8 @@ const handleSaveRateMovie = (req, res) => {
     rateValue: `${req.body.rateValue}`
   };
 
-  const newRateMovie = new MovieRate(rate);
-  newRateMovie
+  const newRate = new Rate(rate);
+  newRate
     .save()
     .then(() => res.json("Rate movie added successfully"))
     .catch(err => res.status(400).json("Error: " + err));
@@ -23,9 +23,8 @@ router.post("/rate/movies", handleSaveRateMovie);
 const calculateRate = (req, res) => {
   console.log(req.params.imdbID);
 
-  //MovieRate.findById(req.params.imdbID);
-  MovieRate.find({ imdbID: req.params.imdbID }, (err, movieRates) => {
-    console.log(movieRates);
+  //Rate.findById(req.params.imdbID);
+  Rate.find({ imdbID: req.params.imdbID }, (err, movieRates) => {
     if (err) {
       console.error(err);
       res.status(500).json(error);
