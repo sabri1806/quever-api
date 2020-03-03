@@ -7,6 +7,7 @@ let Rate = require("../../models/Rate");
 const handleSaveRateMovie = (req, res) => {
   const rate = {
     email: `${req.body.email}`,
+    title: `${req.body.title}`,
     imdbID: `${req.body.imdbID}`,
     rateValue: `${req.body.rateValue}`
   };

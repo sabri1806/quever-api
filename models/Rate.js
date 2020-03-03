@@ -8,6 +8,9 @@ const RateSchema = new mongoose.Schema(
       trim: true,
       minlength: 3
     },
+    title: {
+      type: String
+    },
     imdbID: {
       type: String
     },
