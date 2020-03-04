@@ -19,7 +19,8 @@ const RateSchema = new mongoose.Schema(
     }
   },
   {
-    timestamps: true
+    timestamps: true,
+    collection: "rateMovies"
   }
 );
 

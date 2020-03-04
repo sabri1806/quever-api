@@ -14,7 +14,9 @@ router.get("/test-quever-list", (req, res) =>
 // @access Public
 router.get("/all-watch-later", (req, res) => {
   WatchLater.find()
-    .then(watchlater => res.json(watchlater))
+    .then(watchlater => {
+      res.json(watchlater);
+    })
     .catch(err =>
       res
         .status(404)

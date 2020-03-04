@@ -19,7 +19,8 @@ const WatchLaterSchema = new mongoose.Schema(
     }
   },
   {
-    timestamps: true
+    timestamps: true,
+    collection: "watchLaterMovies"
   }
 );
 
