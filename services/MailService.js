@@ -14,8 +14,8 @@ const mailService = () => {
       port: 25,
       secure: false, // true for 465, false for other ports
       auth: {
-        user: "que.ver.movies@gmail.com", // generated ethereal user
-        pass: "queverMovies" // generated ethereal password
+        user: process.env.MAIL_USER_ADDRESS, // generated ethereal user
+        pass: process.env.MAIL_USER_PASS // generated ethereal password
       },
       tls: {
         rejectUnauthorized: false

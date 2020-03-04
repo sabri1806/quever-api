@@ -1,7 +1,19 @@
+---
 steps:
-  - name: node
+  - args:
+      - install
     entrypoint: npm
-    args: ["install"]
-  - name: node
+    name: "node:10.15.1"
+  - args:
+      - run
+      - create-env
     entrypoint: npm
-    args: ["start"]
+    env:
+      - "MAIL_USER_ADDRESS=${_MAIL_USER_ADDRESS}"
+      - "MAIL_USER_PASS=${_MAIL_USER_PASS}"
+    name: "node:10.15.1"
+  - args:
+      - app
+      - deploy
+    name: gcr.io/cloud-builders/gcloud
+    timeout: 1600s
