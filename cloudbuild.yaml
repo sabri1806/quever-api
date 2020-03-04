@@ -1,19 +1,10 @@
----
 steps:
-  - args:
-      - install
+  - name: node
     entrypoint: npm
-    name: "node:10.15.1"
-  - args:
-      - run
-      - create-env
+    args: ["install"]
+  - name: node
     entrypoint: npm
-    env:
-      - "MAIL_USER_ADDRESS=${_MAIL_USER_ADDRESS}"
-      - "MAIL_USER_PASS=${_MAIL_USER_PASS}"
-    name: "node:10.15.1"
-  - args:
-      - app
-      - deploy
-    name: gcr.io/cloud-builders/npm
-    timeout: 10m0s
+    args: ["test"]
+  - name: node
+    entrypoint: npm
+    args: ["start"]
