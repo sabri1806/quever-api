@@ -18,9 +18,7 @@ connectDB();
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json({ extended: false }));
 
-app.get("/", (req, res) =>
-  res.send("Hello world! Im Saa in quever app, and I hope that work fine :P ")
-);
+app.get("/", (req, res) => res.send("Api version - 1.0.1"));
 
 // use Routes
 app.use("/api/favorites-movies", favourites);
