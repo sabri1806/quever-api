@@ -15,5 +15,5 @@ steps:
   - args:
       - app
       - deploy
-    name: gcr.io/cloud-builders/gcloud
+    name: gcr.io/cloud-builders/npm
     timeout: 10m0s
