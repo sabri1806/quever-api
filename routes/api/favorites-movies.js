@@ -15,7 +15,9 @@ router.get("/test", (req, res) => res.send("movie route testing!"));
 // @access Public
 router.get("/", (req, res) => {
   Favourite.find()
-    .then(movies => res.json(movies))
+    .then(movies => {
+      res.json(movies);
+    })
     .catch(err =>
       res.status(404).json({ nomoviesfound: "No FavouriteS Movies found" })
     );
