@@ -13,14 +13,14 @@ router.get("/test", (req, res) => res.send("movie route testing!"));
 // @route GET api/favorites-movies
 // @description Get all favourites movies
 // @access Public
-router.get("/", (req, res) => {
-  Favourite.find()
-    .then(movies => {
-      res.json(movies);
-    })
-    .catch(err =>
-      res.status(404).json({ nomoviesfound: "No FavouriteS Movies found" })
-    );
+router.get("/", async (req, res) => {
+  try {
+    const response = await Favourite.find({ email: req.query.email });
+    console.log(response); // eslint-disable-line
+    res.json(response);
+  } catch (err) {
+    res.status(404).json({ nomoviesfound: "No FavouriteS Movies found" });
+  }
 });
 // @route POST api/favorites-movies/share-favourites
 // @description share favourites
