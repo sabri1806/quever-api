@@ -24,5 +24,5 @@ const RateSchema = new mongoose.Schema(
   }
 );
 
-RateSchema.index({ email: 1, imdbId: 1 }, { unique: true });
+RateSchema.index({ email: 1, imdbID: 1 }, { unique: true });
 module.exports = Rate = mongoose.model("Rate", RateSchema);
