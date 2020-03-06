@@ -35,7 +35,6 @@ const mailService = () => {
   accessSecretVersion();
 
   return {
-    value: "herrero",
     sendMail
   };
 
@@ -49,6 +48,10 @@ const mailService = () => {
       auth: {
         user: "que.ver.movies@gmail.com", // generated ethereal user
         pass: "queverMovies" // generated ethereal password
+        // when google cloud enable the service
+        // https://console.cloud.google.com/security/secret-manager?authuser=2&orgonly=true&project=quever-api&supportedpurview=organizationId
+        // user: emailUserAddres,
+        // pass: emailUserPass
       },
       tls: {
         rejectUnauthorized: false
